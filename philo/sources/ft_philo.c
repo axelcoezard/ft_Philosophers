@@ -6,13 +6,13 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:47:57 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/16 16:57:15 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/16 16:58:34 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// TODO: Fix le type d'argument de (t_philo *) à (void *)
+// TODO: #2 Fix le type d'argument de (t_philo *) à (void *)
 void	philo_take_fork(t_philo *philo)
 {
 	while (pthread_mutex_trylock(&(philo->next->fork)) == EBUSY)
