@@ -6,33 +6,13 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:48:27 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/16 16:44:48 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/16 16:55:47 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	takefork(t_philo *philo)
-{
-	ft_log(philo, HAS_DIED);
-	while (pthread_mutex_trylock(&(philo->next->fork)) == EBUSY)
-		;
-	pthread_mutex_lock(&(philo->fork));
-	pthread_mutex_lock(&(philo->next->fork));
-	ft_log(philo, HAS_TAKEN_A_FORK);
-	ft_log(philo, HAS_TAKEN_A_FORK);
-}
-
-static void	*philosopher(void *p_data)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *) p_data;
-	takefork(philo);
-	return (NULL);
-}
-
-t_philo	**ft_threads_start(size_t count)
+t_philo	**threads_start(size_t count)
 {
 	t_philo	**philos;
 	size_t	i;
@@ -45,14 +25,15 @@ t_philo	**ft_threads_start(size_t count)
 	{
 		philos[i] = (t_philo *) malloc(sizeof(t_philo));
 		philos[i]->id = i;
-		pthread_create(&(philos[i]->thread), NULL, philosopher, philos[i]);
+		// TODO: #1 Muter la liste en liste chainee cyclique
+		pthread_create(&(philos[i]->thread), NULL, philo_take_fork, philos[i]);
 		pthread_mutex_init(&(philos[i]->fork), NULL);
 	}
 	philos[count] = NULL;
 	return (philos);
 }
 
-void	ft_threads_wait(t_philo	**philos)
+void	threads_wait(t_philo	**philos)
 {
 	size_t	i;
 

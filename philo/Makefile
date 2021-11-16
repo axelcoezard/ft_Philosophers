@@ -6,7 +6,7 @@
 #    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/16 13:31:11 by acoezard          #+#    #+#              #
-#    Updated: 2021/11/16 15:22:55 by acoezard         ###   ########.fr        #
+#    Updated: 2021/11/16 16:55:10 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ OBJECTS			:=	./bin
 
 SRCS			:=	main.c \
 					ft_parse.c \
-					ft_log.c \
+					ft_print.c \
+					ft_philo.c \
 					ft_threads.c \
 
 OBJS			:=	$(addprefix ${OBJECTS}/, $(SRCS:.c=.o))

@@ -6,13 +6,13 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 14:38:29 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/16 15:44:17 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/16 16:54:41 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_log(t_philo *philo, char *message)
+void	print(t_philo *philo, char *message)
 {
 	struct timeval	time;
 	size_t			millis;
