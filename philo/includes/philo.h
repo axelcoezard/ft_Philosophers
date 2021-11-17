@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:39:22 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/16 16:54:17 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/17 21:39:07 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,30 @@ struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	fork;
 
-	struct s_philo	*next;
+	struct s_table	*table;
 };
 typedef struct s_philo	t_philo;
+
+struct s_table
+{
+	t_philo	**philos;
+	size_t	count;
+};
+typedef struct s_table	t_table;
 
 /* ********************** INPUT / OUTPUT ********************** */
 void		print(t_philo *philo, char *message);
 
 /* ************************* THREADS ************************** */
-t_philo		**threads_start(size_t count);
-void		threads_wait(t_philo	**philos);
+t_table		threads_start(size_t count);
+int			threads_count(t_table *table);
+void		threads_wait(t_table *table);
 
 /* ************************** PHILOS ************************** */
-void		philo_take_fork(t_philo *philo);
-void		philo_eat(t_philo *philo);
-void		philo_sleep(t_philo *philo);
-void		philo_think(t_philo *philo);
-void		philo_die(t_philo *philo);
+void		*philo_take_fork(void *data);
+void		*philo_eat(void *data);
+void		*philo_sleep(void *data);
+void		*philo_think(void *data);
+void		*philo_die(void *data);
 
 #endif

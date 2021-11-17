@@ -6,7 +6,7 @@
 #    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/16 13:31:11 by acoezard          #+#    #+#              #
-#    Updated: 2021/11/16 16:55:10 by acoezard         ###   ########.fr        #
+#    Updated: 2021/11/17 21:54:34 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,16 +17,18 @@ INCLUDES		:=	./includes
 OBJECTS			:=	./bin
 
 SRCS			:=	main.c \
+					ft_check.c \
 					ft_parse.c \
 					ft_print.c \
 					ft_philo.c \
-					ft_threads.c \
+					ft_threads.c
 
 OBJS			:=	$(addprefix ${OBJECTS}/, $(SRCS:.c=.o))
 
-CC				:=	gcc
-CFLAGS			:=	-Wall -Wextra -Werror
+CC				:=	clang
+CFLAGS			:=	-Wall -Wextra -Werror -g -fsanitize=address
 CINCLUDES		:=	-I ${INCLUDES}
+CDEPENDENCIES	:=	-pthread -lpthread
 
 BLACK			:=	"\033[1;30m"
 RED				:=	"\033[1;31m"
@@ -45,7 +47,7 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@echo $(GREEN)"● Compilation de ${NAME}..."$(EOC)
-	@${CC} ${CFLAGS} -o ${NAME} ${OBJS}
+	@${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${CDEPENDENCIES}
 
 clean:
 	@echo ${GREEN}"● Supression des fichiers binaires (.o)..."$(EOC)
