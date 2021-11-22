@@ -6,7 +6,7 @@
 #    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/16 13:31:11 by acoezard          #+#    #+#              #
-#    Updated: 2021/11/17 21:54:34 by acoezard         ###   ########.fr        #
+#    Updated: 2021/11/22 11:52:33 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ OBJECTS			:=	./bin
 SRCS			:=	main.c \
 					ft_check.c \
 					ft_parse.c \
+					ft_time.c \
 					ft_print.c \
 					ft_philo.c \
 					ft_threads.c

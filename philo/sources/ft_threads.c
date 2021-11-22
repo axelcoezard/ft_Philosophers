@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:48:27 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/17 21:51:27 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/22 12:02:56 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_table	threads_start(size_t count)
 
 	table.philos = (t_philo **) malloc(count * sizeof(t_philo *));
 	table.count = count;
+	table.time = time_get_now();
 	i = -1;
 	while (++i < count)
 	{
