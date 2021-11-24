@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:38:33 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/24 16:36:15 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:42:24 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	t_table *table;
+	t_table	*table;
 
 	(void) ac;
 	(void) av;

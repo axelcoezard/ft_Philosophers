@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:47:57 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/24 16:38:41 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:41:56 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	philo_init(t_philo *philo, t_table *table, int index)
 	philo->last_eating = -1;
 	philo->thinking = 0;
 	philo->died = 0;
-
 	pthread_mutex_init(table->forks + index, NULL);
 }
 
@@ -65,7 +64,7 @@ void	*philo_check_death(void *data)
 			table->philos[i].last_eating >= table->time_to_die)
 			{
 				table->death = i + 1;
-				break;
+				break ;
 			}
 		}
 	}

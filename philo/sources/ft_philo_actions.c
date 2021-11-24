@@ -6,14 +6,14 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:38:56 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/24 16:09:01 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:42:07 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 void	philo_use_fork(t_philo *philo,
-			int (* mutex_action)(), char *message)
+			int (*mutex_action)(), char *message)
 {
 	mutex_action(philo->lfork);
 	print(philo, message);
