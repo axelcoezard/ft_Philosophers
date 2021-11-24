@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:39:22 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/22 11:54:57 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:32:22 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,38 +30,58 @@
 # define HAS_DIED			"died"
 
 /* ************************ STRUCTURES ************************ */
-struct s_philo
+typedef struct s_philo
 {
 	size_t			id;
 	pthread_t		thread;
-	pthread_mutex_t	fork;
+	pthread_mutex_t	*lfork;
+	pthread_mutex_t	*rfork;
+
+	int				eating;
+	int				last_eating;
+	int				sleeping;
+	int				thinking;
+	int				died;
 
 	struct s_table	*table;
-};
-typedef struct s_philo	t_philo;
+}	t_philo;
 
-struct s_table
+typedef struct s_table
 {
-	struct timeval	time;
-	t_philo			**philos;
+	pthread_mutex_t	*forks;
+	t_philo			*philos;
 	size_t			count;
-};
-typedef struct s_table	t_table;
+
+	size_t			time_to_sleep;
+	size_t			time_to_eat;
+	size_t			time_to_die;
+	size_t			min_to_eat;
+	size_t			death;
+
+	struct timeval	time;
+	pthread_t		is_diying;
+	pthread_mutex_t	is_printing;
+}	t_table;
 
 /* ********************** INPUT / OUTPUT ********************** */
 void			print(t_philo *philo, char *message);
 
+/* ************************* CHECKERS ************************* */
+
 /* ************************* THREADS ************************** */
-t_table			threads_start(size_t count);
-int				threads_count(t_table *table);
+t_table			*threads_start(size_t count);
 void			threads_wait(t_table *table);
 
 /* ************************** PHILOS ************************** */
-void			*philo_take_fork(void *data);
-void			*philo_eat(void *data);
-void			*philo_sleep(void *data);
-void			*philo_think(void *data);
-void			*philo_die(void *data);
+void			philo_init(t_philo *philo, t_table *table, int id);
+void			philo_init_forks(t_philo *philo, t_table *table, int id);
+void			*philo_routine(void *data);
+void			philo_use_fork(t_philo *philo,
+					int (*mutex_action)(), char *msg);
+void			philo_eat(t_philo *philo);
+void			philo_sleep(t_philo *philo);
+void			philo_think(t_philo *philo);
+void			*philo_check_death(void *data);
 
 /* *************************** TIME *************************** */
 struct timeval	time_get_now(void);

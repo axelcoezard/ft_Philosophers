@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
+#    By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/16 13:31:11 by acoezard          #+#    #+#              #
-#    Updated: 2021/11/22 11:52:33 by acoezard         ###   ########.fr        #
+#    Updated: 2021/11/24 14:39:34 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,13 @@ SRCS			:=	main.c \
 					ft_time.c \
 					ft_print.c \
 					ft_philo.c \
+					ft_philo_actions.c \
 					ft_threads.c
 
 OBJS			:=	$(addprefix ${OBJECTS}/, $(SRCS:.c=.o))
 
 CC				:=	clang
-CFLAGS			:=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS			:=	-Wall -Wextra -Werror #-g #-fsanitize=address
 CINCLUDES		:=	-I ${INCLUDES}
 CDEPENDENCIES	:=	-pthread -lpthread
 

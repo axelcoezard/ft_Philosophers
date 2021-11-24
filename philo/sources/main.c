@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:38:33 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/22 11:57:20 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:36:15 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	main(int ac, char **av)
 {
-	t_table threads;
+	t_table *table;
 
 	(void) ac;
 	(void) av;
-	threads = threads_start(8);
-	threads_wait(&threads);
+	table = threads_start(5);
+	threads_wait(table);
 	return (0);
 }

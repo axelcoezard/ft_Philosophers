@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_time.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:42:53 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/22 12:04:20 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/24 15:32:13 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ struct timeval	time_get_now(void)
 
 size_t	time_get_millis(struct timeval time)
 {
-	return (time.tv_usec / 1000);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
 size_t	time_get_millis_now(void)
