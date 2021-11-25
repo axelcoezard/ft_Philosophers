@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:39:22 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/25 18:57:20 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/25 19:16:26 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int				ft_atoi(const char *nptr);
 /* ********************** CHECK / PARSE *********************** */
 int				check_args(int ac, char **av);
 int				check_int(const char *nptr);
+int				check_negative(const char *nptr);
 t_table			*parse(int ac, char **av);
 
 /* ************************* THREADS ************************** */
