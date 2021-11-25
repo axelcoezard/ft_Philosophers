@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:47:57 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/25 19:24:24 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/25 19:33:55 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	*philo_routine(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *) data;
+	if (philo->id % 2 == 0)
+		time_usleep(100);
 	philo->last_eat = time_get_millis_now();
 	philo->n_eat = 0;
 	while (!philo->table->death)

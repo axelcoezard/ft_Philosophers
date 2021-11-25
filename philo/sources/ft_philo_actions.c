@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:38:56 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/25 19:21:18 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/25 19:26:46 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	philo_eat(t_philo *philo)
 	print(philo, IS_EATING);
 	philo->eating = 1;
 	time_usleep(philo->table->time_to_eat);
-	philo->n_eat++;
 	philo->eating = 0;
 	philo->last_eat = time_get_millis_now();
+	philo->n_eat++;
 	philo_use_fork(philo, pthread_mutex_unlock, NULL);
 }
 
