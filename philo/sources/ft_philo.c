@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:47:57 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/25 18:24:58 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/25 19:24:24 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	philo_init(t_philo *philo, t_table *table, int index)
 	philo->table = table;
 	philo->sleeping = 0;
 	philo->eating = 0;
-	philo->last_eat = time_get_millis_now();
-	philo->n_eat = 0;
 	philo->thinking = 0;
 	pthread_mutex_init(table->forks + index, NULL);
 }
@@ -38,15 +36,13 @@ void	*philo_routine(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *) data;
-	while (1)
+	philo->last_eat = time_get_millis_now();
+	philo->n_eat = 0;
+	while (!philo->table->death)
 	{
 		philo_eat(philo);
-		if (philo->n_eat == 0)
-			break;
 		philo_sleep(philo);
 		philo_think(philo);
-		if (philo->table->death)
-			break;
 	}
 	return (NULL);
 }

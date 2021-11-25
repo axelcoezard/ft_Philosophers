@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:38:56 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/25 18:20:25 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/25 19:21:18 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	philo_use_fork(t_philo *philo,
 void	philo_eat(t_philo *philo)
 {
 	philo_use_fork(philo, pthread_mutex_lock, HAS_TAKEN_A_FORK);
-	philo->last_eat = time_get_millis_now();
 	print(philo, IS_EATING);
 	philo->eating = 1;
 	time_usleep(philo->table->time_to_eat);
 	philo->n_eat++;
 	philo->eating = 0;
+	philo->last_eat = time_get_millis_now();
 	philo_use_fork(philo, pthread_mutex_unlock, NULL);
 }
 
