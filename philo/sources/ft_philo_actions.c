@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:38:56 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/24 16:42:07 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:20:25 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,24 @@ void	philo_use_fork(t_philo *philo,
 void	philo_eat(t_philo *philo)
 {
 	philo_use_fork(philo, pthread_mutex_lock, HAS_TAKEN_A_FORK);
-	philo->last_eating = time_get_millis_now();
-	philo->eating = 1;
+	philo->last_eat = time_get_millis_now();
 	print(philo, IS_EATING);
-	usleep(philo->table->time_to_eat * 1000);
-	philo_use_fork(philo, pthread_mutex_unlock, NULL);
+	philo->eating = 1;
+	time_usleep(philo->table->time_to_eat);
+	philo->n_eat++;
 	philo->eating = 0;
+	philo_use_fork(philo, pthread_mutex_unlock, NULL);
 }
 
 void	philo_sleep(t_philo *philo)
 {
 	philo->sleeping = 1;
 	print(philo, IS_SLEEPING);
-	usleep(philo->table->time_to_sleep * 1000);
+	time_usleep(philo->table->time_to_sleep);
 	philo->sleeping = 0;
 }
 
 void	philo_think(t_philo *philo)
 {
-	if (philo->sleeping || philo->eating)
-		return ;
 	print(philo, IS_THINKING);
 }

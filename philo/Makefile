@@ -6,7 +6,7 @@
 #    By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/16 13:31:11 by acoezard          #+#    #+#              #
-#    Updated: 2021/11/24 14:39:34 by acoezard         ###   ########.fr        #
+#    Updated: 2021/11/25 18:58:09 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ INCLUDES		:=	./includes
 OBJECTS			:=	./bin
 
 SRCS			:=	main.c \
+					ft_libft.c \
 					ft_check.c \
 					ft_parse.c \
 					ft_time.c \

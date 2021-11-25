@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:39:22 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/24 16:32:22 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:57:20 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <sys/time.h>
 
 /* ************************* DEFINES ************************** */
+# define MIN_ARGS			4
+# define MAX_ARGS			5
+
 # define HAS_TAKEN_A_FORK	"has taken a fork"
 # define IS_EATING			"is eating"
 # define IS_SLEEPING		"is sleeping"
@@ -38,10 +41,10 @@ typedef struct s_philo
 	pthread_mutex_t	*rfork;
 
 	int				eating;
-	int				last_eating;
+	size_t			last_eat;
+	int				n_eat;
 	int				sleeping;
 	int				thinking;
-	int				died;
 
 	struct s_table	*table;
 }	t_philo;
@@ -55,8 +58,8 @@ typedef struct s_table
 	size_t			time_to_sleep;
 	size_t			time_to_eat;
 	size_t			time_to_die;
-	size_t			min_to_eat;
-	size_t			death;
+	int				min_to_eat;
+	int				death;
 
 	struct timeval	time;
 	pthread_t		is_diying;
@@ -65,11 +68,20 @@ typedef struct s_table
 
 /* ********************** INPUT / OUTPUT ********************** */
 void			print(t_philo *philo, char *message);
+int				print_err(char *where, char *message, int code);
 
-/* ************************* CHECKERS ************************* */
+/* ************************** LIBFT *************************** */
+int				ft_isdigit(int c);
+int				ft_isspace(int c);
+int				ft_atoi(const char *nptr);
+
+/* ********************** CHECK / PARSE *********************** */
+int				check_args(int ac, char **av);
+int				check_int(const char *nptr);
+t_table			*parse(int ac, char **av);
 
 /* ************************* THREADS ************************** */
-t_table			*threads_start(size_t count);
+void			threads_start(t_table *table);
 void			threads_wait(t_table *table);
 
 /* ************************** PHILOS ************************** */
@@ -81,6 +93,7 @@ void			philo_use_fork(t_philo *philo,
 void			philo_eat(t_philo *philo);
 void			philo_sleep(t_philo *philo);
 void			philo_think(t_philo *philo);
+size_t			philo_check_eat(t_table *table);
 void			*philo_check_death(void *data);
 
 /* *************************** TIME *************************** */
@@ -88,5 +101,6 @@ struct timeval	time_get_now(void);
 size_t			time_get_millis(struct timeval time);
 size_t			time_get_millis_now(void);
 size_t			time_get_millis_from_start(t_table *table);
+void			time_usleep(size_t	usec);
 
 #endif

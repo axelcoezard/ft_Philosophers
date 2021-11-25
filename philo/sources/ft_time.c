@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:42:53 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/24 15:32:13 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:20:02 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,13 @@ size_t	time_get_millis_now(void)
 size_t	time_get_millis_from_start(t_table *table)
 {
 	return (time_get_millis_now() - time_get_millis(table->time));
+}
+
+void	time_usleep(size_t	usec)
+{
+	size_t	current;
+
+	current = time_get_millis_now();
+	while (usec > time_get_millis_now() - current)
+		usleep(usec * 10);
 }

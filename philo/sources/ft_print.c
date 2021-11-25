@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 14:38:29 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/24 16:17:00 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/25 19:08:58 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,22 @@ void	print(t_philo *philo, char *message)
 		);
 		pthread_mutex_unlock(&philo->table->is_printing);
 	}
+}
+
+int	print_usage(void)
+{
+	printf( \
+		"usage: ./philo \
+		number_of_philosophers \
+		time_to_die \
+		time_to_eat time_to_sleep \
+		[number_of_times_each_philosopher_must_eat]\n\
+	");
+	return (0);
+}
+
+int	print_err(char *where, char *message, int code)
+{
+	printf("philo: %s: %s\n", where, message);
+	return (code);
 }
