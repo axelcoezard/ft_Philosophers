@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:38:56 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 16:14:53 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:29:38 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 void	philo_use_fork(t_philo *philo,
 			int (*sem_action)(), char *message)
 {
-	int	i;
-
-	sem_getvalue(philo->table->forks, &i);
-	printf("Count: %d\n", i);
 	sem_action(philo->table->forks);
 	print(philo, message);
 	sem_action(philo->table->forks);

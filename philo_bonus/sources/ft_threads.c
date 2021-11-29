@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:48:27 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 16:18:54 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:29:55 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ void	threads_start(t_table *table)
 
 	sem_unlink("forks");
 	sem_unlink("printing");
-	table->is_printing = sem_open("printing", O_CREAT, 666, 1);
-	table->forks = sem_open("forks", O_CREAT, 666, table->count);
-	printf("COunt: %d\n", table->count);
+	table->is_printing = sem_open("printing", O_CREAT, 0666, 1);
+	table->forks = sem_open("forks", O_CREAT, 0666, table->count);
 	i = -1;
 	while (++i < table->count)
 		philo_init(table->philos + i, table, i);
