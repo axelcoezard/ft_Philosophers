@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:39:22 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 15:29:51 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:41:24 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@
 # include <pthread.h>
 # include <string.h>
 # include <errno.h>
+# include <fcntl.h>
 # include <sys/time.h>
+# include <sys/stat.h>
+# include <semaphore.h>
 
 /* ************************* DEFINES ************************** */
 # define MIN_ARGS			4
@@ -37,8 +40,6 @@ typedef struct s_philo
 {
 	size_t			id;
 	pthread_t		thread;
-	pthread_mutex_t	*lfork;
-	pthread_mutex_t	*rfork;
 
 	int				eating;
 	size_t			last_eat;
@@ -50,7 +51,7 @@ typedef struct s_philo
 
 typedef struct s_table
 {
-	pthread_mutex_t	*forks;
+	sem_t			*forks;
 	t_philo			*philos;
 	size_t			count;
 
@@ -61,7 +62,7 @@ typedef struct s_table
 	int				death;
 
 	struct timeval	time;
-	pthread_mutex_t	is_printing;
+	sem_t			*is_printing;
 }	t_table;
 
 /* ********************** INPUT / OUTPUT ********************** */

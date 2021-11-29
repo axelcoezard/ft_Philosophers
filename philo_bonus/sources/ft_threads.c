@@ -6,11 +6,11 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:48:27 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 14:29:19 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:41:41 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 /**
  * @brief	La fonction threads_start prepare tous les
@@ -26,13 +26,11 @@ void	threads_start(t_table *table)
 {
 	size_t	i;
 
-	pthread_mutex_init(&table->is_printing, NULL);
+	table->is_printing = sem_open("printing", O_CREAT, O_RDWR, 1);
+	table->forks = sem_open("forks", O_CREAT, O_RDWR, table->count);
 	i = -1;
 	while (++i < table->count)
 		philo_init(table->philos + i, table, i);
-	i = -1;
-	while (++i < table->count)
-		philo_init_forks(table->philos + i, table, i);
 	i = -1;
 	while (++i < table->count)
 	{
@@ -50,13 +48,10 @@ void	threads_start(t_table *table)
  */
 void	threads_wait(t_table *table)
 {
-	size_t	i;
-
-	i = -1;
-	while (++i < table->count)
-		pthread_mutex_destroy(table->forks + i);
-	pthread_mutex_destroy(&table->is_printing);
+	sem_close(table->forks);
+	sem_close(table->is_printing);
+	sem_unlink("forks");
+	sem_unlink("printing");
 	free(table->philos);
-	free(table->forks);
 	free(table);
 }

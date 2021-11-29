@@ -6,11 +6,11 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 14:28:12 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 10:53:53 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:03:34 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 int	check_args(int ac, char **av)
 {

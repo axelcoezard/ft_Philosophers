@@ -6,11 +6,11 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:47:57 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 15:27:36 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/29 15:41:57 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 void	philo_init(t_philo *philo, t_table *table, int index)
 {
@@ -18,10 +18,8 @@ void	philo_init(t_philo *philo, t_table *table, int index)
 	philo->table = table;
 	philo->sleeping = 0;
 	philo->eating = 0;
-	philo->thinking = 0;
 	philo->last_eat = time_get_millis_now();
 	philo->n_eat = 0;
-	pthread_mutex_init(table->forks + index, NULL);
 }
 
 void	*philo_routine(void *data)
