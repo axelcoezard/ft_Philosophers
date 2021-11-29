@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 14:38:29 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/25 19:08:58 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/29 08:49:02 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	print(t_philo *philo, char *message)
 
 int	print_usage(void)
 {
-	printf( \
+	printf(\
 		"usage: ./philo \
 		number_of_philosophers \
 		time_to_die \
