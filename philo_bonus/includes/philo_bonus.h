@@ -6,12 +6,12 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:39:22 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/30 10:57:58 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:46:31 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#ifndef PHILO_BONUS_H
+# define PHILO_BONUS_H
 
 /* ************************* INCLUDES ************************* */
 # include <unistd.h>
@@ -95,7 +95,7 @@ void			philo_eat(t_philo *philo);
 void			philo_sleep(t_philo *philo);
 void			philo_think(t_philo *philo);
 size_t			philo_check_eat(t_table *table);
-void			*philo_check_death(t_table *table);
+void			philo_check_death(t_table *table);
 
 /* *************************** TIME *************************** */
 struct timeval	time_get_now(void);

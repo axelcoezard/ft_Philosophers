@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:47:57 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/30 11:01:02 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:46:43 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ size_t	philo_check_eat(t_table *table)
 	return (1);
 }
 
-void	*philo_check_death(t_table *table)
+void	philo_check_death(t_table *table)
 {
 	size_t	i;
 
@@ -72,7 +72,7 @@ void	*philo_check_death(t_table *table)
 			{
 				print(table->philos + i, HAS_DIED);
 				table->death = 1;
-				return (NULL);
+				return ;
 			}
 			sem_post(table->is_diying);
 		}
@@ -80,5 +80,4 @@ void	*philo_check_death(t_table *table)
 			break ;
 	}
 	table->death = 1;
-	return (NULL);
 }

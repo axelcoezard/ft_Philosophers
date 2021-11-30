@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:39:22 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/30 10:48:48 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:45:45 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void			philo_eat(t_philo *philo);
 void			philo_sleep(t_philo *philo);
 void			philo_think(t_philo *philo);
 size_t			philo_check_eat(t_table *table);
-void			*philo_check_death(t_table *table);
+void			philo_check_death(t_table *table);
 
 /* *************************** TIME *************************** */
 struct timeval	time_get_now(void);
