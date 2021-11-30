@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:48:27 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/30 10:49:25 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:30:41 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	threads_wait(t_table *table)
 {
 	size_t	i;
 
+	time_usleep(100);
 	i = -1;
 	while (++i < table->count)
 		pthread_mutex_destroy(table->forks + i);

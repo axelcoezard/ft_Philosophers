@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 14:38:29 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 15:35:26 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:19:44 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  */
 void	print(t_philo *philo, char *message)
 {
-	if (message != NULL)
+	if (message != NULL && philo->table->is_printing != NULL)
 	{
 		sem_wait(philo->table->is_printing);
 		if (!philo->table->death)

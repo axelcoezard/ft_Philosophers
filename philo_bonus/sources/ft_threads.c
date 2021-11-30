@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:48:27 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/30 11:00:01 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:30:33 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@ void	threads_start(t_table *table)
  */
 void	threads_wait(t_table *table)
 {
-	sem_close(table->forks);
-	sem_close(table->is_diying);
-	sem_close(table->is_printing);
+	time_usleep(100);
 	sem_unlink("forks");
 	sem_unlink("diying");
 	sem_unlink("printing");

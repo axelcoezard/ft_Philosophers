@@ -6,7 +6,7 @@
 #    By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/16 13:31:11 by acoezard          #+#    #+#              #
-#    Updated: 2021/11/29 16:15:00 by acoezard         ###   ########.fr        #
+#    Updated: 2021/11/30 11:22:49 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS			:=	main.c \
 OBJS			:=	$(addprefix ${OBJECTS}/, $(SRCS:.c=.o))
 
 CC				:=	clang
-CFLAGS			:=	#-Wall -Wextra -Werror #-g #-fsanitize=address
+CFLAGS			:=	-Wall -Wextra -Werror #-g #-fsanitize=address
 CINCLUDES		:=	-I ${INCLUDES}
 CDEPENDENCIES	:=	-pthread -lpthread
 
