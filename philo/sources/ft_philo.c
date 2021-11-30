@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:47:57 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 16:12:02 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 10:37:53 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ void	philo_init(t_philo *philo, t_table *table, int index)
 	philo->last_eat = time_get_millis_now();
 	philo->n_eat = 0;
 	pthread_mutex_init(table->forks + index, NULL);
+}
+
+void	philo_init_forks(t_philo *philo, t_table *table, int index)
+{
+	if (index - 1 < 0)
+		philo->lfork = table->forks + (table->count - 1);
+	else
+		philo->lfork = table->forks + (index - 1);
+	philo->rfork = table->forks + index;
 }
 
 void	*philo_routine(void *data)
