@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:39:22 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 15:41:24 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 10:57:58 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_table
 	int				death;
 
 	struct timeval	time;
+	sem_t			*is_diying;
 	sem_t			*is_printing;
 }	t_table;
 

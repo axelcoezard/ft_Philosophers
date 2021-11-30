@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 16:47:57 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 16:11:47 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:01:02 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	*philo_check_death(t_table *table)
 		{
 			if (table->philos[i].eating)
 				continue ;
+			sem_wait(table->is_diying);
 			if (time_get_millis_now() - \
 			table->philos[i].last_eat >= table->time_to_die)
 			{
@@ -73,6 +74,7 @@ void	*philo_check_death(t_table *table)
 				table->death = 1;
 				return (NULL);
 			}
+			sem_post(table->is_diying);
 		}
 		if (philo_check_eat(table))
 			break ;

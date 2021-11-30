@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:48:27 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 16:29:55 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:00:01 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	threads_start(t_table *table)
 
 	sem_unlink("forks");
 	sem_unlink("printing");
+	sem_unlink("diying");
 	table->is_printing = sem_open("printing", O_CREAT, 0666, 1);
+	table->is_diying = sem_open("diying", O_CREAT, 0666, 1);
 	table->forks = sem_open("forks", O_CREAT, 0666, table->count);
 	i = -1;
 	while (++i < table->count)
@@ -51,8 +53,10 @@ void	threads_start(t_table *table)
 void	threads_wait(t_table *table)
 {
 	sem_close(table->forks);
+	sem_close(table->is_diying);
 	sem_close(table->is_printing);
 	sem_unlink("forks");
+	sem_unlink("diying");
 	sem_unlink("printing");
 	free(table->philos);
 	free(table);

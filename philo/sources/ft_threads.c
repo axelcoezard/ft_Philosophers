@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 13:48:27 by acoezard          #+#    #+#             */
-/*   Updated: 2021/11/29 14:29:19 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/11/30 10:49:25 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	threads_start(t_table *table)
 	size_t	i;
 
 	pthread_mutex_init(&table->is_printing, NULL);
+	pthread_mutex_init(&table->is_diying, NULL);
 	i = -1;
 	while (++i < table->count)
 		philo_init(table->philos + i, table, i);
